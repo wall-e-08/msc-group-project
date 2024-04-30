@@ -3,8 +3,8 @@ import os
 from pydub import AudioSegment
 
 
-audio_categories = ["ambulance", "fire-and-trucks", "police"]
-data_dir_prefix = "datasets/vens"
+audio_categories = ["Train_horn"]
+data_dir_prefix = "datasets/yt"
 
 for catg in audio_categories:
   audio = AudioSegment.from_wav(f"{data_dir_prefix}/{catg}.wav")
@@ -21,8 +21,8 @@ for catg in audio_categories:
 
       segment = audio[start_time:end_time]
 
-      output_file = f"{catg}_{line_number}.wav"
-      output_file_path = os.path.join(os.getcwd(), "datasets/final_audio/", output_file)
+      output_file = f"{catg}_{line_number+9}.wav"
+      output_file_path = os.path.join(os.getcwd(), data_dir_prefix, output_file)
       segment.export(output_file_path, format="wav")
 
       print(f"Saved: {output_file}")

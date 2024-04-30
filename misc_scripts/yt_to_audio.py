@@ -4,8 +4,8 @@ from pytube import YouTube
 from moviepy.editor import VideoFileClip
 
 
-def download_youtube_audio(url):
-  output_file = f"datasets/{randint(10000, 99999)}.wav"
+def download_youtube_audio(url, category):
+  output_file = f"datasets/yt/{category}_{randint(10000, 99999)}.wav"
   try:
     # download youtube video
     yt = YouTube(url)
@@ -28,8 +28,9 @@ def download_youtube_audio(url):
 
 
 if __name__ == "__main__":
-  yt_url = [
-    "https://www.youtube.com/watch?v=bVNwYznbBdM",
-  ]
-  for _url in yt_url:
-    download_youtube_audio(_url)
+  yt_url = {
+    # "ambulance: "https://www.youtube.com/watch?v=bVNwYznbBdM",
+    "train_horn": "https://www.youtube.com/watch?v=k5t60QwM-3o",
+  }
+  for catg, _url in yt_url.items():
+    download_youtube_audio(_url, catg)
